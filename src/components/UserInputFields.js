@@ -1,6 +1,6 @@
 import React from "react";
 
-const UserInputFields = () => {
+const UserInputFields = (props) => {
 
   return(
     <section className="user-input-fields">
@@ -8,11 +8,11 @@ const UserInputFields = () => {
       <form className="user-input-form">
         <span>
           <label htmlFor="length-value">L: </label>
-          <input type="text" name="length-value"></input>
+          <input type="number" name="length-value" min="1.0" step="0.1" id="length-value"></input>
         </span>
         <span>
-          <label htmlFor="length-value">n: </label>
-          <input type="text" name="node-value"></input> 
+          <label htmlFor="node-value">n: </label>
+          <input type="number" name="node-value" min="0.0" step="1.0" id="node-value"></input> 
         </span>
       </form>
     </section>
