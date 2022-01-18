@@ -13,7 +13,7 @@ class App extends React.Component {
       xdata: [],
       ydata: [],
       L: 1.0,
-      n: 1.0,
+      n: 3.0,
       steps: 100,
     };
     this.calculateNewGrid = this.calculateNewGrid.bind(this);
@@ -23,24 +23,47 @@ class App extends React.Component {
   componentDidMount() {
     document.getElementById('length-value').value = this.state.L;
     document.getElementById('node-value').value = this.state.n;
+    this.calculateNewGrid();
   }
 
   setStateCallBack = () => {
-    console.log('Event: After Setting State');
-    console.log(`\tAfter Set State Counter ${this.state.ydata}`);
+    console.log(`\tAfter Set State Counter ${this.state.L} ${this.state.n}`);
+  }
+
+  updateBoxWidth = () => {
+    let currentL = document.getElementById('length-value').value;
+    this.setState({
+      ...this.state,
+      L: currentL,
+    },this.calculateNewGrid);
+  }
+
+  updateEnergyNode = () => {
+    let currentN = document.getElementById('node-value').value;
+    this.setState({
+      ...this.state,
+      n: currentN,
+    },this.calculateNewGrid);
   }
 
   calculateNewGrid = () => {
+
+    console.log('Calculate new grid');
+
     const stepSize = this.state.L / this.state.steps;
     let tempX = [];
     let tempY = [];
+
     for (let i = 0; i < this.state.steps; ++i) {
-      tempX.push(i*stepSize);
+      let xStart = -1.0*this.state.L / 2.0;
+      tempX.push(xStart + i*stepSize);
+      // let Energy = this.state.n * this.state.n / 2.0 / this.state.L / this.state.L;
+      let Energy = 0;
       if ( this.state.n % 2 === 0) {
-        tempY.push(Math.sin(this.state.n*Math.PI*i*stepSize / this.state.L));
+        tempY.push(Energy + Math.sin(this.state.n*Math.PI*tempX[i] / this.state.L));
       }
       else {
-        tempY.push(Math.cos(this.state.n*Math.PI*i*stepSize / this.state.L));
+        tempY.push(Energy + Math.cos(this.state.n*Math.PI*tempX[i] / this.state.L));
       }
     }
     this.setState({
@@ -56,9 +79,9 @@ class App extends React.Component {
         <h2 style={{marginLeft: "20px"}}>Tony's Plotly Playground</h2>
         
         <Header />
-        <UserInputFields L={this.state.L} n={this.state.n} />
+        <UserInputFields L={this.state.L} n={this.state.n} updateBoxWidth={this.updateBoxWidth} updateEnergyNode={this.updateEnergyNode} />
 
-        <button style={{textAlign: "center"}} onClick={this.calculateNewGrid}>Calculate New Solution</button>
+        {/* <button style={{textAlign: "center"}} onClick={this.calculateNewGrid}>Calculate New Solution</button> */}
 
         <Plot style={{textAlign: "center"}} data={[
           {
