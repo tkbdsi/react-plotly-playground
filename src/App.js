@@ -93,15 +93,18 @@ class App extends React.Component {
 
         {/* <button style={{textAlign: "center"}} onClick={this.calculateNewGrid}>Calculate New Solution</button> */}
 
-        <Plot style={{textAlign: "center"}} data={[
-          {
-            x: this.state.xdata,
-            y: this.state.ydata,
-            type: 'scatter',
-            mode: 'lines+markers',
-            marker: {color: 'red'},
-          },
-        ]} />
+        <div style={{display: "flex", justifyContent: "center"}}>
+          <Plot data={[
+            {
+              x: this.state.xdata,
+              y: this.state.ydata,
+              type: 'scatter',
+              mode: 'lines+markers',
+              marker: {color: 'red'},
+            },
+          ]} />
+        </div>
+
       </React.Fragment>
     )
   }
