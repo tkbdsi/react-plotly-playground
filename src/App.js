@@ -15,6 +15,7 @@ class App extends React.Component {
       L: 1.0,
       n: 3.0,
       steps: 100,
+      typography: 'cos',
     };
     this.calculateNewGrid = this.calculateNewGrid.bind(this);
     this.setStateCallBack = this.setStateCallBack.bind(this);
@@ -42,9 +43,14 @@ class App extends React.Component {
 
   updateEnergyNode = () => {
     let currentN = document.getElementById('node-value').value;
+    let tempTypo = "cos";
+    if (currentN % 2 === 0) {
+      tempTypo = "sin";
+    }
     this.setState({
       ...this.state,
       n: currentN,
+      typography: tempTypo,
     },this.calculateNewGrid);
   }
 
@@ -93,7 +99,10 @@ class App extends React.Component {
 
         {/* <button style={{textAlign: "center"}} onClick={this.calculateNewGrid}>Calculate New Solution</button> */}
 
-        <div style={{display: "flex", justifyContent: "center"}}>
+        <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+          <h4>&Psi;<sub>{this.state.n}</sub>={this.state.typography}({Math.round(this.state.n * 100.0 / this.state.L) / 100.0}&pi;x)</h4>
+          <h4>m*E<sub>{this.state.n}</sub>={Math.round(this.state.n * 100.0 / this.state.L) / 100.0 / 2.0}&#x210F;<sup>2</sup>&pi;<sup>2</sup></h4>
+
           <Plot data={[
             {
               x: this.state.xdata,
