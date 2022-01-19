@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/react-plotly-playground/static/css/main.b26998d8.css",
-    "main.js": "/react-plotly-playground/static/js/main.ad8da7e0.js",
+    "main.css": "/react-plotly-playground/static/css/main.0f723d35.css",
+    "main.js": "/react-plotly-playground/static/js/main.3ea4b31e.js",
     "static/js/787.c34ac1bd.chunk.js": "/react-plotly-playground/static/js/787.c34ac1bd.chunk.js",
     "index.html": "/react-plotly-playground/index.html",
-    "main.b26998d8.css.map": "/react-plotly-playground/static/css/main.b26998d8.css.map",
-    "main.ad8da7e0.js.map": "/react-plotly-playground/static/js/main.ad8da7e0.js.map",
+    "main.0f723d35.css.map": "/react-plotly-playground/static/css/main.0f723d35.css.map",
+    "main.3ea4b31e.js.map": "/react-plotly-playground/static/js/main.3ea4b31e.js.map",
     "787.c34ac1bd.chunk.js.map": "/react-plotly-playground/static/js/787.c34ac1bd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b26998d8.css",
-    "static/js/main.ad8da7e0.js"
+    "static/css/main.0f723d35.css",
+    "static/js/main.3ea4b31e.js"
   ]
 }
