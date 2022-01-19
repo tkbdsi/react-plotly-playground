@@ -18,11 +18,13 @@ class App extends React.Component {
     };
     this.calculateNewGrid = this.calculateNewGrid.bind(this);
     this.setStateCallBack = this.setStateCallBack.bind(this);
+    this.updateSteps = this.updateSteps.bind(this);
   }
 
   componentDidMount() {
     document.getElementById('length-value').value = this.state.L;
     document.getElementById('node-value').value = this.state.n;
+    document.getElementById('steps-value').value = this.state.steps;
     this.calculateNewGrid();
   }
 
@@ -43,6 +45,14 @@ class App extends React.Component {
     this.setState({
       ...this.state,
       n: currentN,
+    },this.calculateNewGrid);
+  }
+
+  updateSteps = () => {
+    let currentSteps = document.getElementById('steps-value').value;
+    this.setState({
+      ...this.state,
+      steps: currentSteps,
     },this.calculateNewGrid);
   }
 
@@ -79,7 +89,7 @@ class App extends React.Component {
         <h2 style={{marginLeft: "20px"}}>Tony's Plotly Playground</h2>
         
         <Header />
-        <UserInputFields L={this.state.L} n={this.state.n} updateBoxWidth={this.updateBoxWidth} updateEnergyNode={this.updateEnergyNode} />
+        <UserInputFields L={this.state.L} n={this.state.n} updateBoxWidth={this.updateBoxWidth} updateEnergyNode={this.updateEnergyNode} updateSteps={this.updateSteps} />
 
         {/* <button style={{textAlign: "center"}} onClick={this.calculateNewGrid}>Calculate New Solution</button> */}
 
